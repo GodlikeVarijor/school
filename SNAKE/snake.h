@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 #ifndef SNAKE_H
 #define SNAKE_H
 
@@ -12,7 +14,7 @@ typedef struct {
 void initialize_game();
 void update();
 void render();
-void is_running();
+bool is_running();
 
 #endif
 
