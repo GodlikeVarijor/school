@@ -34,7 +34,7 @@ int main() {
         update();
         render();
 
-        struct timespec ts = {0, FRAME_TIME * 1000000};
+        struct timespec ts = {0, FRAME_RATE * 1000000};
         nanosleep(&ts, NULL);
     }
 
