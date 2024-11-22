@@ -9,7 +9,6 @@ Základní parametry programu:
 4. Hrany konzole budou pro hada neprůchozí.
 5. Hra bude obsahovat statistiky nejlepších 10 hráčů, které budou uloženy v externím textovém
 souboru.
-ADDITIONAL: 
 6. Implementujte možnost nahrání překážek do hracího pole z textového souboru
 7. Implementujte možnost změny rychlosti hada
 8. Implementujte možnost změny velikosti hracího pole
