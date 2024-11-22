@@ -64,3 +64,7 @@ void render() {
     }
     printf("Score: %d\n", score);
 }
+
+bool is_running() {
+    return running;
+}
