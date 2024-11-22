@@ -88,3 +88,15 @@ void render() {
     }
     printf("Score: %d\n", score);
 }
+
+void load_scores() {
+    
+}
+
+void save_scores() {
+    
+}
+
+bool is_running() {
+    return running; 
+}

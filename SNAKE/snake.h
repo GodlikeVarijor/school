@@ -15,6 +15,9 @@
     void update();
     void render();
     bool is_running();
+    void load_scores();
+    void save_scores();
+
 
     #endif
 
