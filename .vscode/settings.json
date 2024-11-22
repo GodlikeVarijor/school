@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        ".fantomasignore": "ignore",
+        "stdlib.h": "c",
+        "unistd.h": "c"
+    }
+}
