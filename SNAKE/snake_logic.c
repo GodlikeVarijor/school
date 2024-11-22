@@ -25,6 +25,8 @@ bool collide(vector2 a, vector2 b) {
     return a.x == b.x && a.y == b.y;
 }
 
+// need to fix and update "update" and "render" functions
+
 void update() {
     vector2 next = {head.x + dir.x, head.y + dir.y};
 
