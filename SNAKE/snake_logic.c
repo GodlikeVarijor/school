@@ -4,15 +4,14 @@
 #include <stdbool.h>
 
 #define MAX_SEGMENTS 1000
-static vector2 segments[MAX_SEGMENTS];
 
-static vector2 head;
-static vector2 food;
-static vector2 screen = {MAX_WIDTH, MAX_HEIGHT};
-static vector2 dir;
-static int score;
-static bool running;
-
+vector2 head;
+vector2 food;
+vector2 screen = {MAX_WIDTH, MAX_HEIGHT};
+vector2 dir;
+vector2 segments[MAX_SEGMENTS];
+int score;
+bool running;
 
 void initialize_game() {
     head.x = screen.x / 2;
@@ -60,7 +59,6 @@ void update() {
     }
 }
 
-
 void render() {
     system("clear");
     for (int y = 0; y < screen.y; y++) {
@@ -89,6 +87,10 @@ void render() {
     printf("Score: %d\n", score);
 }
 
+bool is_running() {
+    return running; 
+}
+
 void load_scores() {
     
 }
@@ -97,6 +99,3 @@ void save_scores() {
     
 }
 
-bool is_running() {
-    return running; 
-}

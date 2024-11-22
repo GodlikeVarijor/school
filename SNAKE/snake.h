@@ -11,6 +11,8 @@
         int y;
     } vector2;
 
+    extern vector2 dir;
+
     void initialize_game();
     void update();
     void render();
