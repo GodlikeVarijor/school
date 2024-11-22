@@ -21,6 +21,9 @@ ADDITIONAL:
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include "snake_logic.c"
+#include "snake.h"
+#include "input.h"
 
 #define FRAME_RATE 200
 
