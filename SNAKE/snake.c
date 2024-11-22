@@ -16,18 +16,18 @@ ADDITIONAL:
 */
 
 
+// snake.c
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include "snake_logic.c"
 #include "snake.h"
 #include "input.h"
 
 #define FRAME_RATE 200
 
-int main() { 
+int main() {
     srand(time(NULL));
     initialize_game();
     load_scores();
@@ -44,5 +44,4 @@ int main() {
     save_scores();
     printf("\nKonec hry\n");
     return 0;
-
-} 
+}
