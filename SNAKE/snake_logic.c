@@ -47,3 +47,20 @@ void update() {
         running = false;
     }
 }
+
+void render() {
+    system("clear");
+    for (int y = 0; y < screen.y; y++) {
+        for (int x = 0; x < screen.x; x++ ) {
+            if (collide(head, (vector2) {x, y})) {
+                printf("0");
+            } else if (collide(food, (vector2) {x, y})) {
+                printf("X");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    printf("Score: %d\n", score);
+}
