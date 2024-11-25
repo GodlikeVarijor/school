@@ -12,13 +12,15 @@ void save_score(const char* name, int score) {
 void load_scores() {
     FILE* file = fopen("scores.txt", "r");
     if (file) {
+        char name[50];
         int score;
         printf("Top Scores:\n");
-        while (fscanf(file, "%d", &score) != EOF) {
-            printf("%d\n", score);
+        while (fscanf(file, "%s %d", name, &score) != EOF) {
+            printf("%s %d\n", name, score);
         }
         fclose(file);
     } else {
         printf("No scores available.\n");
     }
 }
+
