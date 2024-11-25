@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h> 
 #include "snake.h"
+#include <string.h>
 
 int main() {
     Snake snake;

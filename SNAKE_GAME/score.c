@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "score.h"
 
-void save_score(int score) {
+void save_score(const char* name, int score) {
     FILE* file = fopen("scores.txt", "a");
     if (file) {
-        fprintf(file, "%d\n", score);
+        fprintf(file, "%s %d\n", name, score);
         fclose(file);
     }
 }
