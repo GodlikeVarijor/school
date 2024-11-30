@@ -16,12 +16,12 @@ void draw(const Snake* snake) {
             if (x == 0 || x == WIDTH - 1 || y == 0 || y == HEIGHT - 1) {
                 printf("#"); 
             } else if (x == snake->food.x && y == snake->food.y) {
-                printf("F"); 
+                printf("*"); 
             } else {
                 int is_body = 0;
                 for (int i = 0; i < snake->length; i++) {
                     if (snake->body[i].x == x && snake->body[i].y == y) {
-                        printf("🟩");
+                        printf("O");
                         is_body = 1;
                         break;
                     }
@@ -37,8 +37,8 @@ void initialize_game(Snake* snake) {
     srand(time(NULL));
     snake->length = 1;
     snake->body[0] = (Point){WIDTH / 2, HEIGHT / 2};
-    snake->direction = 'w';
-    snake->speed = 10;
+    snake->direction = 'w'; // Počáteční směr
+    snake->speed = 10;      // Počáteční rychlost
     generate_food(snake);
 }
 
@@ -68,7 +68,7 @@ void update_game(Snake* snake, int* game_over) {
         case 'd': next_head.x++; break;
     }
 
-    // Kontrola kolize
+    // Kontrola kolizí
     if (next_head.x <= 0 || next_head.x >= WIDTH - 1 ||
         next_head.y <= 0 || next_head.y >= HEIGHT - 1) {
         *game_over = 1;
@@ -82,17 +82,17 @@ void update_game(Snake* snake, int* game_over) {
         }
     }
 
-    // posunuti hada
+    // Přidání nové hlavy
     for (int i = snake->length; i > 0; i--) {
         snake->body[i] = snake->body[i - 1];
     }
     snake->body[0] = next_head;
 
-    // kontrola jidla
+    // Kontrola jídla
     if (next_head.x == snake->food.x && next_head.y == snake->food.y) {
         snake->length++;
         generate_food(snake);
-        if (snake->length % 2 == 0) snake->speed--;
+        if (snake->length % 2 == 0) snake->speed--; 
     } else {
         snake->body[snake->length] = (Point){0, 0};
     }
@@ -101,15 +101,15 @@ void update_game(Snake* snake, int* game_over) {
 void enable_raw_mode() {
     struct termios term;
     tcgetattr(STDIN_FILENO, &term); 
-    term.c_lflag &= ~(ICANON | ECHO); 
+    term.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &term); 
 }
 
 void disable_raw_mode() {
     struct termios term;
-    tcgetattr(STDIN_FILENO, &term); 
+    tcgetattr(STDIN_FILENO, &term);
     term.c_lflag |= (ICANON | ECHO); 
-    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    tcsetattr(STDIN_FILENO, TCSANOW, &term); 
 }
 
 int kbhit() {
