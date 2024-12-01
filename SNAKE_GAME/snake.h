@@ -4,8 +4,8 @@
 #include "point.h"
 #include "obstacles.h"
 
-#define WIDTH 40   
-#define HEIGHT 20  
+extern int WIDTH;
+extern int HEIGHT;
 
 typedef struct {
     Point body[100]; 

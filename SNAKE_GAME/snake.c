@@ -11,6 +11,12 @@ int main() {
     char player_name[50];
     Obstacles obstacles;
 
+    FILE* field_file = fopen("field_size.txt", "r");
+    if (field_file) {
+        fscanf(field_file, "%d %d", &WIDTH, &HEIGHT);
+        fclose(field_file);
+    }
+
     printf("Enter your name: ");
     fgets(player_name, sizeof(player_name), stdin);
 
