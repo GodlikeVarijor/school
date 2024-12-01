@@ -1,0 +1,12 @@
+TODO (today):
+
+update every .c file with "point.h" lib, 
+create obstacles.c and define
+update "snake_logic.c" functions for drawing and updating game, 
+
+TODO (tomorrow):
+create function for map adjustment (bonus task)
+fix the ugly shit graphic (y/x vector problem)
+
+TODO (if time):
+multiplayer
