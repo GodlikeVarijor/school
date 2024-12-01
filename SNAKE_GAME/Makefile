@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall
 
-SRCS = snake.c score.c snake_logic.c
+SRCS = snake.c score.c obstacles.c snake_logic.c
 OBJS = $(SRCS:.c=.o)
 
 TARGET = snake
