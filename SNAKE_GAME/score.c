@@ -1,3 +1,4 @@
+#include "point.h"
 #include <stdio.h>
 #include "score.h"
 
@@ -23,4 +24,3 @@ void load_scores() {
         printf("No scores available.\n");
     }
 }
-

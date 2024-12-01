@@ -1,3 +1,4 @@
+#include "point.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -5,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "snake.h"
+#include "obstacles.h"
 
 void clear_screen() {
     printf("\033[H\033[J");

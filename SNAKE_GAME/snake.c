@@ -1,9 +1,11 @@
+#include "point.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include "snake.h"
 #include "score.h"
+#include "obstacles.h"
 
 int main() {
     char player_name[50];
