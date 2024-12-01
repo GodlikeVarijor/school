@@ -7,12 +7,8 @@ void load_obstacles(const char* filename, Obstacles* obstacles) {
     if (file) {
         obstacles->count = 0;
         while (fscanf(file, "%d %d", &obstacles->obstacles[obstacles->count].x, &obstacles->obstacles[obstacles->count].y) != EOF) {
-            printf("Loaded obstacle at (%d, %d)\n", obstacles->obstacles[obstacles->count].x, obstacles->obstacles[obstacles->count].y);
             obstacles->count++;
         }
         fclose(file);
-    } else {
-        printf("Could not open obstacles file.\n");
     }
 }
-
