@@ -3,6 +3,9 @@
 
 #include "point.h"
 
+extern int WIDTH;
+extern int HEIGHT; 
+
 typedef struct {
     Point obstacles[100];
     int count;            
