@@ -9,6 +9,7 @@
 
 int main() {
     char player_name[50];
+    Obstacles obstacles;
 
     printf("Enter your name: ");
     fgets(player_name, sizeof(player_name), stdin);
@@ -21,13 +22,15 @@ int main() {
     Snake snake;
     int game_over = 0;
 
+    load_obstacles("obstacles.txt", &obstacles);
+
     enable_raw_mode();
     initialize_game(&snake);
 
     while (!game_over) {
         clear_screen();
-        draw(&snake);
-        update_game(&snake, &game_over);
+        draw(&snake, &obstacles);  
+        update_game(&snake, &game_over, &obstacles); 
         usleep(snake.speed * 50000);  
     }
 

@@ -12,7 +12,7 @@ void clear_screen() {
     printf("\033[H\033[J");
 }
 
-void draw(const Snake* snake) {
+void draw(const Snake* snake, const Obstacles* obstacles) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             if (x == 0 || x == WIDTH - 1 || y == 0 || y == HEIGHT - 1) {
@@ -28,29 +28,43 @@ void draw(const Snake* snake) {
                         break;
                     }
                 }
-                if (!is_body) printf(" ");
+
+                int is_obstacle = 0;
+                for (int i = 0; i < obstacles->count; i++) {
+                    if (obstacles->obstacles[i].x == x && obstacles->obstacles[i].y == y) {
+                        printf("X");
+                        is_obstacle = 1;
+                        break;
+                    }
+                }
+
+                if (!is_body && !is_obstacle) {
+                    printf(" ");
+                }
             }
         }
         printf("\n");
     }
 }
 
+
 void initialize_game(Snake* snake) {
     srand(time(NULL));
     snake->length = 1;
     snake->body[0] = (Point){WIDTH / 2, HEIGHT / 2};
-    snake->direction = 'w'; // Počáteční směr
-    snake->speed = 10;      // Počáteční rychlost
+    snake->direction = 'w'; 
+    snake->speed = 10;      
     generate_food(snake);
+    printf("Game initialized: Snake starts at (%d, %d)\n", snake->body[0].x, snake->body[0].y);
 }
+
 
 void generate_food(Snake* snake) {
     snake->food.x = rand() % (WIDTH - 2) + 1;
     snake->food.y = rand() % (HEIGHT - 2) + 1;
 }
 
-void update_game(Snake* snake, int* game_over) {
-    // Čtení vstupu
+void update_game(Snake* snake, int* game_over, const Obstacles* obstacles) {
     if (kbhit()) {
         char input = getchar();
         switch (input) {
@@ -61,7 +75,7 @@ void update_game(Snake* snake, int* game_over) {
         }
     }
 
-    // Posun hada
+    // Posun hada 
     Point next_head = snake->body[0];
     switch (snake->direction) {
         case 'w': next_head.y--; break;
@@ -70,7 +84,7 @@ void update_game(Snake* snake, int* game_over) {
         case 'd': next_head.x++; break;
     }
 
-    // Kontrola kolizí
+    // Kontrola kolizí s okrajem nebo tělem
     if (next_head.x <= 0 || next_head.x >= WIDTH - 1 ||
         next_head.y <= 0 || next_head.y >= HEIGHT - 1) {
         *game_over = 1;
@@ -84,13 +98,21 @@ void update_game(Snake* snake, int* game_over) {
         }
     }
 
-    // Přidání nové hlavy
+    // Kontrola kolizí s překážkami
+    for (int i = 0; i < obstacles->count; i++) {
+        if (obstacles->obstacles[i].x == next_head.x && obstacles->obstacles[i].y == next_head.y) {
+            *game_over = 1;
+            return;
+        }
+    }
+
+    // Přidání nové hlavy 
     for (int i = snake->length; i > 0; i--) {
         snake->body[i] = snake->body[i - 1];
     }
     snake->body[0] = next_head;
 
-    // Kontrola jídla
+    // Kontrola jídla 
     if (next_head.x == snake->food.x && next_head.y == snake->food.y) {
         snake->length++;
         generate_food(snake);
@@ -99,6 +121,7 @@ void update_game(Snake* snake, int* game_over) {
         snake->body[snake->length] = (Point){0, 0};
     }
 }
+
 
 void enable_raw_mode() {
     struct termios term;
