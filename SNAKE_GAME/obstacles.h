@@ -6,9 +6,10 @@
 extern int WIDTH;
 extern int HEIGHT; 
 
+// Struktura pro uchovani prekazek
 typedef struct {
-    Point obstacles[100];
-    int count;            
+    Point obstacles[100]; // Pole prekazek
+    int count;
 } Obstacles;
 
 void load_obstacles(const char* filename, Obstacles* obstacles);

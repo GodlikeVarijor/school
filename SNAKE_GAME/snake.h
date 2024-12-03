@@ -7,6 +7,7 @@
 extern int WIDTH;
 extern int HEIGHT;
 
+// Sturktura pro hada
 typedef struct {
     Point body[100]; 
     int length;      

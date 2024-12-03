@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "score.h"
 
+// Funkce pro ulozeni skore
 void save_score(const char* name, int score) {
     FILE* file = fopen("scores.txt", "a");
     if (file) {
@@ -10,12 +11,14 @@ void save_score(const char* name, int score) {
     }
 }
 
+// Funkce pro nacteni skore
 void load_scores() {
     FILE* file = fopen("scores.txt", "r");
     if (file) {
         char name[50];
         int score;
         printf("Top Scores:\n");
+        // Cteni skore ze souboru
         while (fscanf(file, "%s %d", name, &score) != EOF) {
             printf("%s %d\n", name, score);
         }
