@@ -1,0 +1,6 @@
+Pepa 12
+Franta 8
+Martin 6
+try1 4
+try2 4
+try3 3

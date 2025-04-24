@@ -1,0 +1,6 @@
+Pocet pismen: 72
+Pocet cisel: 7
+Celkovy pocet znaku: 104
+Cesta souboru: "/mnt/c/Users/Martin/OneDrive/Dokumenty/C FEKT/CV10"
+Pocet slov: 19
+Pocet vet: 1
